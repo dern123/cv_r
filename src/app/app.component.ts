@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-
+import { ActivatedRoute, Params } from '@angular/router';
+import {TranslateService} from '@ngx-translate/core';
+// import { LanguageService } from './services/language.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,4 +9,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'cv';
+  constructor(
+    public translate: TranslateService,
+    private route: ActivatedRoute
+    ) {
+  }
+
+  ngOnInit(): void {
+    this.translate.addLangs([ 'eng','ukr']);
+    this.translate.setDefaultLang('eng');
+  }
 }
